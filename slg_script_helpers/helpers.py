@@ -19,7 +19,7 @@ def build_true_configuration(args, dynamic_defaults, logger, config_filepath=Non
     # handle for dynamic defaults if no value is set
     for arg in dynamic_defaults:
         if not config.get(arg):
-            config[arg] = get_dynamic_default_arg(config, arg)
+            config[arg] = get_dynamic_default_arg(config, arg, dynamic_defaults)
 
     return config
 
@@ -48,6 +48,8 @@ def read_config_file(filepath, logger):
         with open(filepath, 'r') as stream:
             try:
                 config = yaml.safe_load(stream)
+                if not config:
+                    config = {}
                 return config
             except yaml.YAMLError as exc:
                 print(exc)

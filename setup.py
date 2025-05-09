@@ -17,8 +17,7 @@ def parse_requirements(filename):
 if __name__ == "__main__":
     setup(
         name="slg-script-helpers",
-            name=PACKAGE_NAME,
-            version=VERSION,
+        version=VERSION,
         packages=find_packages(),
         install_requires=parse_requirements("requirements.txt"),
         author="Steven Gotting",
